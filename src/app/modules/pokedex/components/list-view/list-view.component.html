@@ -1,0 +1,46 @@
+<div class="container">
+
+
+    <mat-accordion>
+        <mat-expansion-panel hideToggle *ngFor="let pokemon of selectedResult"
+            (afterExpand)="fetchPanelData(pokemon.url)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{pokemon.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <p>Detalles</p>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <button mat-icon-button color="warn" (click)="saveToLocalStorage(pokemon.url)">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <div class="section">
+                <img class="avatar" src="{{pokemonInfo?.sprites.front_default}}">
+                <mat-list class="nombre">
+                    <strong>Nombre</strong>:
+                    <mat-list-item>
+                        {{pokemon.name}}
+                    </mat-list-item>
+                </mat-list>
+                <mat-divider [vertical]="true" style="height:300px"></mat-divider>
+                <mat-list>
+                    <strong>Habilidades</strong>
+                    <mat-list-item *ngFor="let ability of pokemonInfo?.abilities">
+                        {{ability?.ability.name}}
+                    </mat-list-item>
+                </mat-list>
+                <mat-divider [vertical]="true" style="height:300px"></mat-divider>
+                <mat-list class="indices">
+                    <strong>Apariciones</strong>
+                    <mat-list-item *ngFor="let game of pokemonInfo?.game_indices">
+                        {{game?.version.name}}
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent=getData($event)" showFirstLastButtons></mat-paginator>
+
+</div>

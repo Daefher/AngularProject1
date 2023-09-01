@@ -1,0 +1,32 @@
+.sidenav-content {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin-left: 0 !important;
+}
+
+.mat-drawer-content {
+    margin-left: 0 !important;
+}
+
+#open-menu {
+    margin: 0px;
+    z-index: 999;
+    display: flex;
+    flex-flow: column;
+    position: fixed;
+    width: 85px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidenav {
+    padding: 20px;
+}
